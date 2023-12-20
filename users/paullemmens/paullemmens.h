@@ -63,6 +63,11 @@
 #define CL_QWER     DF(_QWERTY)
 #define MODQWER     DF(_MOD_QWERTY)
 
+// Custom keycodes dedicated to switching between OLED animations
+#define BONGO1      LT(0, KC_F24)
+#define BONGO2      LT(0, KC_F23)
+#define WPM_GR      LT(0, KC_F22)
+
 // https://precondition.github.io/home-row-mods#using-non-basic-keycodes-in-mod-taps
 enum custom_keycodes {
     MT_OUMLA = SAFE_RANGE,
@@ -152,6 +157,6 @@ enum userspace_layers {
 #define _________________ADJUST_L2_________________       RGB_SAI,  RGB_HUI, RGB_VAI, RGB_SPI, RGB_MOD
 #define _________________ADJUST_L3_________________       RGB_M_SN, RGB_M_K, RGB_M_X, RGB_M_G, RGB_M_T
 
-#define _________________ADJUST_R1_________________       _______,  KC_AMPR, KC_ASTR, KC_LPRN, KC_UNDS
-#define _________________ADJUST_R2_________________       _______,  KC_DLR,  KC_PERC, KC_CIRC, _______
-#define _________________ADJUST_R3_________________       _______,  KC_EXLM, KC_AT,   KC_HASH, _______
+#define _________________ADJUST_R1_________________       BONGO1,   KC_AMPR, KC_ASTR, KC_LPRN, KC_UNDS
+#define _________________ADJUST_R2_________________       BONGO2,   KC_DLR,  KC_PERC, KC_CIRC, _______
+#define _________________ADJUST_R3_________________       WPM_GR,   KC_EXLM, KC_AT,   KC_HASH, _______

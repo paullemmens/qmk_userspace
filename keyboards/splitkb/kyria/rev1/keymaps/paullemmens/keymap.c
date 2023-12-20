@@ -21,12 +21,14 @@
 #ifdef WPM_ENABLE
     char wpm_str[10];
 
+    uint8_t selected_animation = 0;
+
     #ifdef WPM_GRAPH
         uint16_t wpm_graph_timer = 0;
         #include "wpm_graph.h"
     #endif
 
-    #ifdef BONGO2
+    #ifdef BONGOCAT2
         #include "bongo2.h"
     #endif
     #ifdef BONGOCAT
@@ -35,7 +37,7 @@
 #endif
 
 #ifdef VELOCIKEY_ENABLE
-#include "rgblight.h"
+#include "velocikey.h"
 #endif
 
 #ifdef ENCODER_ENABLE
@@ -182,11 +184,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Adjust Layer: Symbols, volume, locks, RGB
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |   VLK  | BrDn | BrUp |      |      |      |                              |      |  &   |  *   |  (   |  _   |        |
+ * |   VLK  | BrDn | BrUp |      |      |      |                              |BONGO1|  &   |  *   |  (   |  _   |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |  CAPS  | SAI  | HUI  | VAI  | Eff+ | MOD  |                              |      |  $   |  %   |  ^   |      |        |
+ * |  CAPS  | SAI  | HUI  | VAI  | Eff+ | MOD  |                              |BONGO2|  $   |  %   |  ^   |      |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |  RTOG  |RGB SN| RGB K| RGB X| RGB G| RGB T| RGB P| RGB B|  | RGB R|RGB SW|      |  !   |  @   |  #   |      |        |
+ * |  RTOG  |RGB SN| RGB K| RGB X| RGB G| RGB T| RGB P| RGB B|  | RGB R|RGB SW|WPM_GR|  !   |  @   |  #   |      |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        | Mute |      |      | NumLk|Scrllk|  |Insert| OSX  | QWERT|      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
@@ -219,6 +221,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 //     ),
 };
+
+
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+
+    switch (keycode) {
+#ifdef WPM_ENABLE
+        case BONGO1:
+            if(record->event.pressed) {
+                selected_animation = 0;
+            }
+            break;
+        case BONGO2:
+            if(record->event.pressed) {
+                selected_animation = 1;
+            }
+            break;
+        case WPM_GR:
+            if(record->event.pressed) {
+                selected_animation = 2;
+            }
+            break;
+#endif //WPM_ENABLE
+        default:
+            return true;
+    }
+
+    return true;
+}
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -302,15 +332,27 @@ bool oled_task_user(void) {
     if (is_keyboard_master()) {
         render_status(); // Renders the current keyboard state (layer, lock, caps, scroll, etc)
     } else {
-        #ifdef WPM_GRAPH
-            render_wpm_graph();
-        #elif defined(BONGOCAT)
-            render_anim();
-        #elif defined(BONGO2)
-            draw_bongo(false);
-        #else
-            render_kyria_logo();
-        #endif
+        switch (selected_animation) {
+            case 0:
+                render_anim();
+                break;
+            case 1:
+                draw_bongo(false);
+                break;
+            case 2:
+                render_wpm_graph();
+                break;
+            default:
+                render_kyria_logo();
+                break;
+        }
+        /* #ifdef WPM_GRAPH */
+        /*     render_wpm_graph(); */
+        /* #elif defined(BONGOCAT) */
+        /*     render_anim(); */
+        /* #else */
+        /*     render_kyria_logo(); */
+        /* #endif */
     }
     return false;
 }

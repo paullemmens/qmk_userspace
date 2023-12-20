@@ -16,9 +16,13 @@
 #pragma once
 
 #ifdef WPM_ENABLE
-  /* #define BONGOCAT */
-  #define BONGO2
-  /* #define WPM_GRAPH */
+  #if defined(KEYBOARD_splitkb_kyria_rev1)
+    #define BONGOCAT
+    #define BONGOCAT2
+    #define WPM_GRAPH
+  #else
+    #define WPM_GRAPH
+  #endif
   #define SPLIT_WPM_ENABLE
 #endif
 

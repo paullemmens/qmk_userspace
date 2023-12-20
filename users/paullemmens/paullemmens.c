@@ -78,6 +78,11 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 }
 #endif
 
+__attribute__ ((weak))
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+    return true;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 #ifdef CALLUM_ONESHOT
@@ -213,5 +218,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     uprintf("KL: kc: 0x%04X, col: %u, row: %u, pressed: %b, time: %u, interrupt: %b, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
 #endif
 
-    return true;
+    return process_record_keymap(keycode, record);
 };

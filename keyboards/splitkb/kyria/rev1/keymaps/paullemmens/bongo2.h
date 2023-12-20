@@ -3,7 +3,7 @@
 
 // From https://github.com/pedker/OLED-BongoCat-Revision/blob/main/bongo.h
 
-#define ANIM_FRAME_DURATION 75 // how long each frame lasts in ms
+#define BG2ANIM_FRAME_DURATION 75 // how long each frame lasts in ms
 #define ANIM_SIZE 636 // number of bytes in array, minimize for adequate firmware size, max is 1024
 #define IDLE_FRAMES 5
 #define IDLE_TIMEOUT 750 // the amount of time it takes to return to idle
@@ -18,9 +18,9 @@ enum anim_states
 };
 uint8_t anim_state = Idle;
 uint32_t idle_timeout_timer = 0;
-uint32_t anim_timer = 0;
-uint8_t current_idle_frame = 0;
-uint8_t current_tap_frame = 0;
+uint32_t bg2anim_timer = 0;
+uint8_t bg2current_idle_frame = 0;
+uint8_t bg2current_tap_frame = 0;
 
 struct pair_int_int
 {
@@ -440,7 +440,7 @@ void eval_anim_state(void)
             else if (timer_elapsed32(idle_timeout_timer) >= IDLE_TIMEOUT) // Prep to Idle
             {
                 anim_state = Idle;
-                current_idle_frame = 0;
+                bg2current_idle_frame = 0;
             }
             break;
 
@@ -467,13 +467,13 @@ static void draw_bongo(bool minimal)
     {
         case Idle:
             if (minimal)
-                oled_write_raw_P(idle_minimal[abs((IDLE_FRAMES - 1) - current_idle_frame)], ANIM_SIZE);
+                oled_write_raw_P(idle_minimal[abs((IDLE_FRAMES - 1) - bg2current_idle_frame)], ANIM_SIZE);
             else
-                oled_write_raw_P(idle[abs((IDLE_FRAMES - 1) - current_idle_frame)], ANIM_SIZE);
-            if (timer_elapsed32(anim_timer) > ANIM_FRAME_DURATION)
+                oled_write_raw_P(idle[abs((IDLE_FRAMES - 1) - bg2current_idle_frame)], ANIM_SIZE);
+            if (timer_elapsed32(bg2anim_timer) > BG2ANIM_FRAME_DURATION)
             {
-                current_idle_frame = (current_idle_frame + 1) % IDLE_FRAMES;
-                anim_timer = timer_read32();
+                bg2current_idle_frame = (bg2current_idle_frame + 1) % IDLE_FRAMES;
+                bg2anim_timer = timer_read32();
             }
             break;
 
@@ -486,10 +486,10 @@ static void draw_bongo(bool minimal)
 
         case Tap:
             if (minimal)
-                oled_write_raw_P(tap_minimal[abs((TAP_FRAMES - 1) - current_tap_frame)], ANIM_SIZE);
+                oled_write_raw_P(tap_minimal[abs((TAP_FRAMES - 1) - bg2current_tap_frame)], ANIM_SIZE);
             else
-                oled_write_raw_P(tap[abs((TAP_FRAMES - 1) - current_tap_frame)], ANIM_SIZE);
-            current_tap_frame = (current_tap_frame + 1) % TAP_FRAMES;
+                oled_write_raw_P(tap[abs((TAP_FRAMES - 1) - bg2current_tap_frame)], ANIM_SIZE);
+                bg2current_tap_frame = (bg2current_tap_frame + 1) % TAP_FRAMES;
             break;
 
         default:
