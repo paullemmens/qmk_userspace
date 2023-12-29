@@ -262,7 +262,7 @@ static void render_status(void) {
     render_qmk_logo();
 
     #if defined(KEYBOARD_splitkb_kyria_rev1)
-        oled_write_P(PSTR("Kyria rev1.0"), false);
+        oled_write_P(PSTR("Kyria rev1.2"), false);
     #else
         oled_write_P(PSTR("Kyria rev2.1"), false);
     #endif
