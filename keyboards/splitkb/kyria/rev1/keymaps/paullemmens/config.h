@@ -16,8 +16,8 @@
 #pragma once
 
 #ifdef WPM_ENABLE
-  #define BONGOCAT
-  /* #define BONGO2 */
+  /* #define BONGOCAT */
+  #define BONGO2
   /* #define WPM_GRAPH */
   #define SPLIT_WPM_ENABLE
 #endif

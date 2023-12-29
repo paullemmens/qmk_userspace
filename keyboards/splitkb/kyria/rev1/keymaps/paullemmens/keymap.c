@@ -331,6 +331,8 @@ bool oled_task_user(void) {
             render_wpm_graph();
         #elif defined(BONGOCAT)
             render_anim();
+        #elif defined(BONGO2)
+            draw_bongo(false);
         #else
             render_kyria_logo();
         #endif
