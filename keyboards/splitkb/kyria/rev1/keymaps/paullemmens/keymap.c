@@ -308,6 +308,7 @@ static void render_status(void) {
         default:
             oled_write_P(PSTR("Undefined\n"), false);
     }
+    oled_write_P(PSTR("\n"), false);
 
     // Host Keyboard LED Status
     led_t led_state = host_keyboard_led_state();
