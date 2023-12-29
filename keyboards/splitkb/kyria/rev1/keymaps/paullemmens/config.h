@@ -16,12 +16,9 @@
 #pragma once
 
 #ifdef WPM_ENABLE
-  #if defined(KEYBOARD_splitkb_kyria_rev1)
-    #define BONGOCAT
-    /* #define WPM_GRAPH */
-  #else
-    #define WPM_GRAPH
-  #endif
+  #define BONGOCAT
+  /* #define BONGO2 */
+  /* #define WPM_GRAPH */
   #define SPLIT_WPM_ENABLE
 #endif
 
@@ -65,13 +62,11 @@
 
 // For now, enable Callum's oneshots for the elite-pi only but do depend it on
 // the rev1 kyria flag.
-#if defined(KEYBOARD_splitkb_kyria_rev1)
-  #define CALLUM_ONESHOT
-#endif
+/* #if defined(KEYBOARD_splitkb_kyria_rev1) */
+#define CALLUM_ONESHOT
+/* #endif */
 
 // Ensure that we can double tap reset to go into bootloader mode.
-#if defined(KEYBOARD_splitkb_kyria_rev1)
-  #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET // Activates the double-tap behavior
-  #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 300U // Timeout window in ms in which the double tap can occur.
-  /* #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP17 // Specify a optional status led by GPIO number which blinks when entering the bootloader */
-#endif
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET // Activates the double-tap behavior
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 300U // Timeout window in ms in which the double tap can occur.
+/* #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP17 // Specify a optional status led by GPIO number which blinks when entering the bootloader */
