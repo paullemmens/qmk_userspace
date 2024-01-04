@@ -80,9 +80,13 @@ enum custom_keycodes {
     OS_SHFT,
     OS_CTRL,
     OS__ALT,
-    OS__CMD
+    OS__CMD,
     #endif
+
+    STORE_SETUPS,
+    PRINT_SETUPS
 };
+
 #define OU_LCTL LCTL_T(MT_OUMLA)
 #define EA_LSFT LSFT_T(MT_EACUT)
 #define RB_LCTL LCTL_T(MT_RCBR)
@@ -176,6 +180,6 @@ enum userspace_layers {
 #define _________________ADJUST_L2_________________       RGB_SAI,  RGB_HUI, RGB_VAI, RGB_SPI, RGB_MOD
 #define _________________ADJUST_L3_________________       RGB_M_SN, RGB_M_K, RGB_M_X, RGB_M_G, RGB_M_T
 
-#define _________________ADJUST_R1_________________       _______,  KC_AMPR, KC_ASTR, KC_LPRN, KC_UNDS
-#define _________________ADJUST_R2_________________       _______,  KC_DLR,  KC_PERC, KC_CIRC, _______
+#define _________________ADJUST_R1_________________       STORE_SETUPS,  KC_AMPR, KC_ASTR, KC_LPRN, KC_UNDS
+#define _________________ADJUST_R2_________________       PRINT_SETUPS,  KC_DLR,  KC_PERC, KC_CIRC, _______
 #define _________________ADJUST_R3_________________       _______,  KC_EXLM, KC_AT,   KC_HASH, _______

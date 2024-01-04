@@ -1,7 +1,7 @@
 # Settings to save space via https://docs.qmk.fm/#/squeezing_avr.
 LTO_ENABLE = yes
 #
-CONSOLE_ENABLE = no
+CONSOLE_ENABLE = yes
 COMMAND_ENABLE = no
 MOUSEKEY_ENABLE = no
 #

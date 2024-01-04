@@ -90,6 +90,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
 
     switch (keycode) {
+        case STORE_SETUPS:
+            if (record->event.pressed) {
+                store_setups_in_eeprom();
+            }
+            return false;
+        case PRINT_SETUPS:
+            if (record->event.pressed) {
+                print_stored_setups();
+            }
+            return false;
+
         case MACOS_L:  // This allows me to toggle macOS relevant adjusting of modifiers
             if (record->event.pressed) {
                 user_config.macos_enabled ^= 1; // Toggles the status
@@ -212,7 +223,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
 #ifdef CONSOLE_ENABLE
-    uprintf("KL: kc: 0x%04X, col: %u, row: %u, pressed: %b, time: %u, interrupt: %b, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+    /* uprintf("KL: kc: 0x%04X, col: %u, row: %u, pressed: %b, time: %u, interrupt: %b, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count); */
 #endif
 
     return true;
