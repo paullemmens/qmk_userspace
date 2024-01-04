@@ -14,12 +14,12 @@ SWAP_HANDS_ENABLE = no
 # TODO: may bug things on the display.
 AVR_USE_MINIMAL_PRINTF = yes
 
-
 # Stuff shared over keyboards
 RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
 LEADER_ENABLE = no        # Enable the Leader Key feature
 TAP_DANCE_ENABLE = no
 UNICODE_ENABLE = no
+OS_DETECTION_ENABLE = yes
 
 SRC += paullemmens.c
 SRC += oneshot.c

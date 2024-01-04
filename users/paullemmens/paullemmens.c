@@ -17,6 +17,8 @@
 #include "paullemmens.h"
 #include "persistent.h"
 
+#include "os_detection.h"
+
 #ifdef CALLUM_ONESHOT
   #include "callum_oneshot.h"
 #endif

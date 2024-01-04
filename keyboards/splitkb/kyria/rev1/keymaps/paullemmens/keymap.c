@@ -15,6 +15,7 @@
  */
 #include QMK_KEYBOARD_H
 #include "paullemmens.h"
+#include "os_detection.h"
 
 #include "persistent.h"
 
@@ -267,12 +268,30 @@ static void render_status(void) {
         oled_write_P(PSTR("Kyria rev2.1"), false);
     #endif
 
-    if (user_config.macos_enabled) {
-        oled_write_P(PSTR(" OSX"), false);
+    switch (detected_host_os()) {
+        case OS_UNSURE:
+            oled_write_P(PSTR(" ???"), false);
+            break;
+        case OS_WINDOWS:
+            oled_write_P(PSTR(" Win"), false);
+            break;
+        case OS_MACOS:
+            oled_write_P(PSTR(" Mac"), false);
+            break;
+        case OS_IOS:
+            oled_write_P(PSTR(" iOS"), false);
+            break;
+        case OS_LINUX:
+            oled_write_P(PSTR(" Lnx"), false);
+            break;
     }
-    else {
-        oled_write_P(PSTR("    "), false);
-    }
+
+/* if (user_config.macos_enabled) { */
+/*         oled_write_P(PSTR(" OSX"), false); */
+/*     } */
+/*     else { */
+/*         oled_write_P(PSTR("    "), false); */
+/*     } */
 
     #ifdef VELOCIKEY_ENABLE
     if (velocikey_enabled()) {
