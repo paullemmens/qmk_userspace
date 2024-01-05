@@ -84,8 +84,8 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   LAYOUT_wrapper( \
       KC_TAB,  K01, K02, K03,     K04,     K05,                                                 K06,     K07,     K08,     K09, K0A, KC_BSPC, \
       KC_ESC,  K11, K12, K13,     K14,     K15,                                                 K16,     K17,     K18,     K19, K1A, KC_QUOT, \
-      KC_LSFT, K21, K22, K23,     K24,     K25,     CL_QWER,  OSX_DSP,       DEL_RAI,  BS_LALT, K26,     K27,     K28,     K29, K2A, KC_RSFT, \
-                         KC_LGUI, KC_LOPT, SPC_LWR, KC_LCMD,  OS_LCMD,       KC_RCMD,  ENT_RSF, KC_SPC,  KC_ROPT, KC_APP \
+      KC_LSFT, K21, K22, K23,     K24,     K25,     CL_QWER,  _______,       DEL_RAI,  BS_LALT, K26,     K27,     K28,     K29, K2A, KC_RSFT, \
+                         KC_LGUI, KC_LOPT, SPC_LWR, KC_LCMD,  TO(_RAISE),    KC_RCMD,  ENT_RSF, KC_SPC,  KC_ROPT, KC_APP \
     )
 
 /* Re-pass though to allow templates to be used */
@@ -103,11 +103,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |  ESC   |   A  |   S  |  D   |   F  |   G  |                              |   H  |   J  |   K  |   L  | ;  : |  ' "   |
  * |        |      |      | LShft| raise|lower |                              | lower| raise|RShift|      |      |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |  C   |   V  |   B  | Clean|SLGui+|  | Del  | LAlt |   N  |   M  | ,  < | . >  | /  ? | RShift |
- * |        | LGui |      |      | LCmd | LCtrl|Qwerty| lower|  | Raise| BS   | RCtrl| RCmd |      |      |      |        |
+ * | LShift |   Z  |   X  |  C   |   V  |   B  | Clean|      |  | Del  | LAlt |   N  |   M  | ,  < | . >  | /  ? | RShift |
+ * |        | LGui |      |      | LCmd | LCtrl|Qwerty|      |  | Raise| BS   | RCtrl| RCmd |      |      |      |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        | LGUI | LOpt | Space| LCmd | LGui+|  | RCmd | Enter| Space| ROpt | Menu |
- *                        |      |      | lower|      | lower|  |      |RSHift|      |      |      |
+ *                        | LGUI | LOpt | Space| LCmd | To   |  | RCmd | Enter| Space| ROpt | Menu |
+ *                        |      |      | lower|      | Raise|  |      |RSHift|      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_MOD_QWERTY] = LAYOUT_kyria_base_wrapper(
