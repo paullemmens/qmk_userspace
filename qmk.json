@@ -2,6 +2,7 @@
     "userspace_version": "1.0",
     "build_targets": [
         ["splitkb/kyria/rev1", "paullemmens"],
-        ["splitkb/kyria/rev2", "paullemmens"]
+        ["splitkb/kyria/rev2", "paullemmens"],
+        ["redox/rev1/base", "paullemmens"]
     ]
 }
