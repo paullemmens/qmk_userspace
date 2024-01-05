@@ -424,3 +424,20 @@ void matrix_scan_user(void) {
   }
 }
 #endif
+
+#if defined(KEYBOARD_splitkb_kyria_rev2)
+void caps_word_set_user(bool active) {
+    if (active) {
+        // Do something when Caps Word activates.
+        // Set our LED pin as output
+        setPinOutput(24);
+        // Turn the LED off
+        // (Due to technical reasons, high is off and low is on)
+        writePinLow(24);
+    } else {
+        // Do something when Caps Word deactivates.
+        setPinOutput(24);
+        writePinHigh(24);
+    }
+}
+#endif
