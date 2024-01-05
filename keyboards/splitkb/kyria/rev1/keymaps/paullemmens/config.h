@@ -60,12 +60,6 @@
 // every other tick, lower the resolution to 2.
 #define ENCODER_RESOLUTION 2
 
-// For now, enable Callum's oneshots for the elite-pi only but do depend it on
-// the rev1 kyria flag.
-/* #if defined(KEYBOARD_splitkb_kyria_rev1) */
-#define CALLUM_ONESHOT
-/* #endif */
-
 // Ensure that we can double tap reset to go into bootloader mode.
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET // Activates the double-tap behavior
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 300U // Timeout window in ms in which the double tap can occur.
