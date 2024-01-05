@@ -16,6 +16,7 @@
 #pragma once
 
 #define OS_DETECTION_DEBUG_ENABLE
+#define SPLIT_DETECTED_OS_ENABLE
 
 #ifdef WPM_ENABLE
   /* #define BONGOCAT */

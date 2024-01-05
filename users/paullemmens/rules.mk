@@ -19,7 +19,6 @@ RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
 LEADER_ENABLE = no        # Enable the Leader Key feature
 TAP_DANCE_ENABLE = no
 UNICODE_ENABLE = no
-OS_DETECTION_ENABLE = yes
 
 SRC += paullemmens.c
 SRC += oneshot.c

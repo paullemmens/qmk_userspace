@@ -5,6 +5,9 @@ VELOCIKEY_ENABLE = yes
 KEY_LOCK_ENABLE = no
 CAPS_WORD_ENABLE = yes
 
+OS_DETECTION_ENABLE = yes
+SPLIT_DETECTED_OS_ENABLE = yes
+
 # Bootloader selection
 #   Teensy       halfkay
 #   Pro Micro    caterina
