@@ -22,5 +22,4 @@ TAP_DANCE_ENABLE = no
 UNICODE_ENABLE = no
 
 SRC += paullemmens.c
-SRC += oneshot.c
 SRC += persistent.c
