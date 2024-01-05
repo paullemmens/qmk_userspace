@@ -48,15 +48,11 @@
 #define R_ADJST     LT(_ADJUST, KC_R)
 #define F_RAISE     LT(_RAISE, KC_F)
 #define SPC_LWR     LT(_LOWER, KC_SPC)
-#ifdef CALLUM_ONESHOT
-    // TODO: change to something fancy some how to keep keep layer switch in there for key movement.
-    // Callum defines as MO(_OS_MODS) but I want to tap instead of hold the key.
-    #define OS_LCMD     OSL(_OS_MODS)
-#else
-    // FIXME: figure out smart way for adjusting to macos vs windows so I don't need the extra layer no more
-    /* #define OS_LCMD     KC_LCMD */
-    #define OS_LCMD     OSM(MOD_LGUI)
-#endif
+
+// FIXME: figure out smart way for adjusting to macos vs windows so I don't need the extra layer no more
+/* #define OS_LCMD     KC_LCMD */
+#define OS_LCMD     OSM(MOD_LGUI)
+
 #define DEL_RAI     LT(_RAISE, KC_DEL)
 #define ESC_RAI     LT(_RAISE, KC_ESC)
 #define H_LOWER     LT(_LOWER, KC_H)
@@ -73,15 +69,6 @@ enum custom_keycodes {
     MT_EACUT,
     MT_RCBR,
     MACOS_L
-
-    // Keys for the callum one shot modifiers.
-    #ifdef CALLUM_ONESHOT
-    ,
-    OS_SHFT,
-    OS_CTRL,
-    OS__ALT,
-    OS__CMD
-    #endif
 };
 #define OU_LCTL LCTL_T(MT_OUMLA)
 #define EA_LSFT LSFT_T(MT_EACUT)
@@ -91,9 +78,6 @@ enum custom_keycodes {
 enum userspace_layers {
     _MOD_QWERTY = 0,
     _QWERTY,
-    #ifdef CALLUM_ONESHOT
-    _OS_MODS,
-    #endif
     /* _COLEMAK, */ // Not activated because trouble with defaulting to macos layer these days.
     /* _MACOS2, */ // This will probably work because I can now use the same scheme for colemak on macOS.
     _LOWER,
@@ -124,14 +108,6 @@ enum userspace_layers {
 #define _____________MOD_QWERTY_R1_________________       KC_Y,    U_ADJST, KC_I,    KC_O,    KC_P
 #define _____________MOD_QWERTY_R2_________________       H_LOWER, J_RAISE, K_RSHFT, KC_L,    KC_SCLN, KC_QUOT
 #define _____________MOD_QWERTY_R3_________________       N_RCTRL, M__RCMD, KC_COMM, KC_DOT,  KC_SLSH
-
-#define _________________OS_MODS_L1________________       _______, _______, _______, OSL(_ADJUST), _______
-#define _________________OS_MODS_L2________________       _______, OS__ALT, OS_SHFT, OSL(_RAISE),  OSL(_LOWER)
-#define _________________OS_MODS_L3________________       _______, _______, _______, OS__CMD,      OS_CTRL
-
-#define _________________OS_MODS_R1________________       _______,     OSL(_ADJUST), _______, _______, _______
-#define _________________OS_MODS_R2________________       OSL(_LOWER), OSL(_RAISE),  OS_SHFT, OS__ALT, _______
-#define _________________OS_MODS_R3________________       OS_CTRL,     OS__CMD,      _______, _______, _______
 
 #define _________________COLEMAK_L1________________       KC_Q,    KC_W,    KC_F,    KC_P,    KC_G
 #define _________________COLEMAK_L2________________       KC_A,    KC_R,    KC_S,    KC_T,    KC_D
