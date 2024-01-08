@@ -139,7 +139,7 @@ enum userspace_layers {
 
 #define _________________RAISE_R1__________________       ________________NUMBER_RIGHT_______________
 #define _________________RAISE_R2__________________       _______, KC_4,    KC_5,    KC_6,    KC_PPLS
-#define _________________RAISE_R3__________________       _______, KC_1,    KC_2,    KC_3,    _______
+#define _________________RAISE_R3__________________       _______, KC_1,    KC_2,    KC_3,    KC_PSLS
 
 #define ________________NUMBER_LEFT________________       KC_1,    KC_2,    KC_3,    KC_4,    KC_5
 #define ________________NUMBER_RIGHT_______________       _______, KC_7,    KC_8,    KC_9,    KC_MINS
