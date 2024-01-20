@@ -62,6 +62,7 @@
 #define DEFAU_L     DF(_MOD_QWERTY)
 #define CL_QWER     DF(_QWERTY)
 #define MODQWER     DF(_MOD_QWERTY)
+#define COLEMAK     DF(_COLEMAK)
 
 // https://precondition.github.io/home-row-mods#using-non-basic-keycodes-in-mod-taps
 enum custom_keycodes {
@@ -78,8 +79,8 @@ enum custom_keycodes {
 enum userspace_layers {
     _MOD_QWERTY = 0,
     _QWERTY,
-    /* _COLEMAK, */ // Not activated because trouble with defaulting to macos layer these days.
-    /* _MACOS2, */ // This will probably work because I can now use the same scheme for colemak on macOS.
+    _COLEMAK,
+
     _LOWER,
     _RAISE,
     _ADJUST
@@ -122,7 +123,7 @@ enum userspace_layers {
 #define ______________COLEMAK_MOD_DH_L3____________       KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
 
 #define ______________COLEMAK_MOD_DH_R1____________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN
-#define ______________COLEMAK_MOD_DH_R2____________       KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT
+#define ______________COLEMAK_MOD_DH_R2____________       KC_M,    KC_N,    KC_E,    KC_I,    KC_O
 #define ______________COLEMAK_MOD_DH_R3____________       KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLASH
 
 #define _________________LOWER_L1__________________       _________________FUNC_LEFT_________________
