@@ -104,7 +104,7 @@ enum userspace_layers {
 
 #define _____________MOD_QWERTY_L1_________________       KC_Q,    KC_W,    KC_E,    R_ADJST, KC_T
 #define _____________MOD_QWERTY_L2_________________       KC_A,    KC_S,    D_LSHFT, F_RAISE, G_LOWER
-#define _____________MOD_QWERTY_L3_________________       LGUI__Z, KC_X,    KC_C,    V__LCMD, B_LCTRL
+#define _____________MOD_QWERTY_L3_________________       LGUI__Z, KC_X,    KC_C,    V__LCMD, RB_LCTL
 
 #define _____________MOD_QWERTY_R1_________________       KC_Y,    U_ADJST, KC_I,    KC_O,    KC_P
 #define _____________MOD_QWERTY_R2_________________       H_LOWER, J_RAISE, K_RSHFT, KC_L,    KC_SCLN, KC_QUOT
