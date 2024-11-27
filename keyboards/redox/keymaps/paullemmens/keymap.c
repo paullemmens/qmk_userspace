@@ -57,7 +57,7 @@ qmk_tap_dance_action_t tap_dance_actions[] = {
       KC_TAB,   K01,     K02,     K03,     K04,   K05,  KC_ADJ6,                           KC_ADSL, K06,  K07,  K08,     K09,    K0A,      KC_BSPC, \
       KC_ESC,   K11,     K12,     K13,     K14,   K15,  KC_RALB,                           KC_RARB, K16,  K17,  K18,     K19,    K1A,      KC_QUOT, \
       KC_LSFT,  K21,     K22,     K23,     K24,   K25,  T_RAI_L,  SGUI_LWR,      DEL_RAI,  BS_LALT, K26,  K27,  K28,     K29,    K2A,      KC_RSFT, \
-      KC_LCTL,  RAISE_L, KC_LGUI, KC_LOPT,   SPC_LWR,   KC_LCMD,  GUI_LWR,       KC_RCMD,  ENT_RSF,   KC_SPC,   KC_ROPT, KC_APP, KC_RCTL,  RAISE_L \
+      KC_LCTL,  RAISE_L, KC_LGUI, KC_LOPT,   SPC_LWR,   KC_LCMD,  OSX_DSP,       KC_RCMD,  ENT_RSF,   KC_SPC,   KC_ROPT, KC_APP, KC_RCTL,  RAISE_L \
     )
 
 /* Re-pass though to allow templates to be used */
@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
   // KC_LSFT ,LGUI__Z ,KC_X    ,KC_C    ,V_LCTRL ,B_LCTRL ,T_RAI_L ,SGUI_LWR,        DEL_RAI ,BS_LALT ,KC_N    ,M_RCTRL ,KC_COMM ,KC_DOT  ,KC_SLSH ,KC_RSFT ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-  // KC_LCTRL,RAISE_L ,KC_LGUI ,KC_LOPT ,     SPC_LWR ,    KC_LCMD, GUI_LWR ,        KC_RCMD, ENT_RSF ,    KC_SPC  ,     KC_ROPT ,KC_APP  ,KC_RCTRL,RAISE_L
+  // KC_LCTRL,RAISE_L ,KC_LGUI ,KC_LOPT ,     SPC_LWR ,    KC_LCMD, OSX_DSP ,        KC_RCMD, ENT_RSF ,    KC_SPC  ,     KC_ROPT ,KC_APP  ,KC_RCTRL,RAISE_L
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
         _____________MOD_QWERTY_L1_________________, _____________MOD_QWERTY_R1_________________,
         _____________MOD_QWERTY_L2_________________, _____________MOD_QWERTY_R2_________________,
