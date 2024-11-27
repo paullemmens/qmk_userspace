@@ -17,23 +17,32 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+// This helps reduce firmware size due to various changes in qmk toolchain that
+// introduce bloat.
+// https://discord.com/channels/440868230475677696/473506116718952450/838843625084944414
+#define LAYER_STATE_8BIT
+
+/* Use I2C or Serial, not both */
+#define USE_SERIAL
+// #define USE_I2C
+
 /* Select hand configuration */
 #define MASTER_LEFT
 // #define MASTER_RIGHT
 // #define EE_HANDS
 
-#undef RGBLED_NUM
-#define RGBLIGHT_EFFECT_BREATHING
-#define RGBLIGHT_EFFECT_RAINBOW_MOOD
-#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-#define RGBLIGHT_EFFECT_SNAKE
-#define RGBLIGHT_EFFECT_KNIGHT
-#define RGBLIGHT_EFFECT_CHRISTMAS
-#define RGBLIGHT_EFFECT_STATIC_GRADIENT
-#define RGBLIGHT_EFFECT_RGB_TEST
-#define RGBLIGHT_EFFECT_ALTERNATING
-#define RGBLIGHT_EFFECT_TWINKLE
-#define RGBLED_NUM 14
-#define RGBLIGHT_HUE_STEP 8
-#define RGBLIGHT_SAT_STEP 8
-#define RGBLIGHT_VAL_STEP 8
+#ifdef RGBLIGHT_ENABLE
+    #define RGBLIGHT_ANIMATIONS
+    /* #define RGBLIGHT_EFFECT_STATIC_LIGHT */
+    /* #define RGBLIGHT_EFFECT_BREATHING */
+    /* #define RGBLIGHT_EFFECT_RAINBOW_MOOD */
+    /* #define RGBLIGHT_EFFECT_RAINBOW_SWIRL */
+    #undef RGBLED_NUM
+    #define RGBLIGHT_LED_COUNT 14
+    #define RGBLIGHT_HUE_STEP  8
+    #define RGBLIGHT_SAT_STEP  8
+    #define RGBLIGHT_VAL_STEP  8
+    #define RGBLIGHT_SLEEP
+    #define RGBLIGHT_SPLIT
+#endif
+
