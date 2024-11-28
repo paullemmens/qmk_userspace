@@ -1,21 +1,16 @@
-CONSOLE_ENABLE = no
-
+# Adjustments specific for the Redox.
 OLED_DRIVER_ENABLE = no   # Enables the use of OLED displays
 ENCODER_ENABLE = no       # Enables the use of one or more encoders
-RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
-LEADER_ENABLE = no        # Enable the Leader Key feature
-MOUSEKEY_ENABLE = no
-TAP_DANCE_ENABLE = no
-UNICODE_ENABLE = no
 WPM_ENABLE = no
 VELOCIKEY_ENABLE = no
 KEY_LOCK_ENABLE = yes
 
-# Reduces firmware bloat due to changes in qmk toolchain.
-# https://discord.com/channels/440868230475677696/473506116718952450/838845851962703893
-GRAVE_ESC_ENABLE = no
-SPACE_CADET_ENABLE = no
+# FIXME: this should be, I think, set globally in the user space rules.mk
+# but doesn't work without it here.
+CAPS_WORD_ENABLE = yes
 
+# Use Link Time Optimization to squeeze last bit of space because I cannot
+# replace the Redox controller so need to minimize space as much as possible.
 LTO_ENABLE = yes
 
 # Bootloader selection
