@@ -93,7 +93,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 user_config.macos_enabled ^= 1; // Toggles the status
                 eeconfig_update_user(user_config.raw); // Writes the new status to EEPROM
             }
-            /* return false; */
             break;
         case OU_LCTL:
             if (record->tap.count && record->event.pressed) {
@@ -144,6 +143,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case EURO:
             if (record->tap.count && record->event.pressed) {
                 if (user_config.macos_enabled) {
+                    /* SEND_STRING(SS_LEFT(SS_LOPT("2"))); */
                     tap_code16(ROPT(S(KC_2)));
                     return false;
                 } else {

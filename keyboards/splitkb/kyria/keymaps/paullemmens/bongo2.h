@@ -500,8 +500,6 @@ static void draw_bongo(bool minimal)
     {
         // print wpm
         oled_set_cursor(0, 0);
-        /* sprintf(wpm, "WPM:%03d", get_current_wpm()); */
-        /* oled_write(wpm, false); */
         oled_write_P(PSTR("WPM: "), false);
         oled_write(get_u8_str(get_current_wpm(), ' '), false);
 

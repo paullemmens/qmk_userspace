@@ -302,13 +302,13 @@ static void render_status(void) {
         default:
             oled_write_P(PSTR("Undefined\n"), false);
     }
-    oled_write_P(PSTR("\n"), false);
 
     // Host Keyboard LED Status
     led_t led_state = host_keyboard_led_state();
-    oled_write_P(led_state.num_lock ? PSTR("NUM ") : PSTR("    "), false);
-    oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
-    oled_write_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
+    oled_write_P(PSTR("\n"), false);
+    oled_write_P(led_state.num_lock                       ? PSTR("NUM ") : PSTR("    "), false);
+    oled_write_P(led_state.caps_lock || is_caps_word_on() ? PSTR("CAP ") : PSTR("    "), false);
+    oled_write_P(led_state.scroll_lock                    ? PSTR("SCR ") : PSTR("    "), false);
 
     #ifdef WPM_ENABLE
         /* Use code sample from https://docs.qmk.fm/#/squeezing_avr to prevent loading stdlib.h */
