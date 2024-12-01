@@ -20,6 +20,7 @@ RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
 LEADER_ENABLE = no        # Enable the Leader Key feature
 TAP_DANCE_ENABLE = no
 UNICODE_ENABLE = no
+CAPS_WORD_ENABLE = yes
 
 SRC += paullemmens.c
 SRC += persistent.c

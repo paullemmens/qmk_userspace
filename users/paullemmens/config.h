@@ -30,6 +30,11 @@
 
 // Personal configuration directives
 
+// Tap both shifts to activate caps word; in case of mod-tap press and hold
+// until tapping term.
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+#define CAPS_WORD_IDLE_TIMEOUT 3000  // 3 seconds.
+
 // https://docs.splitkb.com/hc/en-us/articles/5799711553820-Power-LED
 #if defined(KEYBOARD_splitkb_kyria_rev2)
   #define LED_CAPS_LOCK_PIN 24
