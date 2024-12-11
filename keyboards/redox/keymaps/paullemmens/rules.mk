@@ -15,6 +15,9 @@ KEY_LOCK_ENABLE = yes
 # https://discord.com/channels/440868230475677696/473506116718952450/838845851962703893
 GRAVE_ESC_ENABLE = no
 SPACE_CADET_ENABLE = no
+# FIXME: this should be, I think, set globally in the user space rules.mk
+# but doesn't work without it here.
+CAPS_WORD_ENABLE = yes
 
 LTO_ENABLE = yes
 
