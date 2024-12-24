@@ -13,4 +13,5 @@ CAPS_WORD_ENABLE = yes
 #   QMK DFU      qmk-dfu
 #   ATmega32A    bootloadHID
 #   ATmega328P   USBasp
-BOOTLOADER = rp2040
+
+CONVERT_TO=liatris
