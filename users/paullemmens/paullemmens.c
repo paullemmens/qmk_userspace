@@ -217,7 +217,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 };
 
 // https://docs.splitkb.com/hc/en-us/articles/5799711553820-Power-LED
-#if defined(KEYBOARD_splitkb_kyria_rev2)
+#if defined(KEYBOARD_splitkb_kyria_rev2) || defined(KEYBOARD_splitkb_kyria_rev1)
     void keyboard_pre_init_user(void) {
     // Set our LED pin as output
     setPinOutput(24);

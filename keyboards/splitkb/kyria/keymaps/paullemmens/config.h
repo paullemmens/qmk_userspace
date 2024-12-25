@@ -59,3 +59,8 @@
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET // Activates the double-tap behavior
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 300U // Timeout window in ms in which the double tap can occur.
 /* #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP17 // Specify a optional status led by GPIO number which blinks when entering the bootloader */
+
+
+// https://docs.splitkb.com/hc/en-us/articles/5799711553820-Power-LED
+#define LED_CAPS_LOCK_PIN 24
+#define LED_PIN_ON_STATE 0
