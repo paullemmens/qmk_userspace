@@ -445,7 +445,6 @@ void matrix_scan_user(void) {
 }
 #endif
 
-#if defined(KEYBOARD_splitkb_kyria_rev2)
 void caps_word_set_user(bool active) {
     if (active) {
         // Do something when Caps Word activates.
@@ -460,4 +459,3 @@ void caps_word_set_user(bool active) {
         writePinHigh(24);
     }
 }
-#endif
