@@ -64,3 +64,13 @@
 // https://docs.splitkb.com/hc/en-us/articles/5799711553820-Power-LED
 #define LED_CAPS_LOCK_PIN 24
 #define LED_PIN_ON_STATE 0
+
+// https://docs.splitkb.com/product-guides/liatris/onboard-rgb
+#undef WS2812_DI_PIN
+#define WS2812_DI_PIN 25
+#undef RGBLED_NUM
+#define RGBLED_NUM 2
+#undef RGBLED_SPLIT
+#define RGBLED_SPLIT {1, 1}
+//
+#define SPLIT_LAYER_STATE_ENABLE
