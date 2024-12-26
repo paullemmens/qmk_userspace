@@ -459,3 +459,26 @@ void caps_word_set_user(bool active) {
         writePinHigh(24);
     }
 }
+
+// https://docs.splitkb.com/product-guides/liatris/onboard-rgb
+void housekeeping_task_user(void) {
+    switch (get_highest_layer(layer_state | default_layer_state)) {
+        case 0:
+            // Default layer
+            rgblight_setrgb_at(RGB_BLACK, 0);
+            rgblight_setrgb_at(RGB_BLACK, 1);
+            break;
+        case 1:
+            rgblight_setrgb_at(RGB_RED, 0);
+            rgblight_setrgb_at(RGB_RED, 1);
+            break;
+        case 2:
+            rgblight_setrgb_at(RGB_GREEN, 0);
+            rgblight_setrgb_at(RGB_GREEN, 1);
+            break;
+        case 3:
+            rgblight_setrgb_at(RGB_BLUE, 0);
+            rgblight_setrgb_at(RGB_GREEN, 1);
+            break;
+    }
+}
