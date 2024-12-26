@@ -445,6 +445,7 @@ void matrix_scan_user(void) {
 }
 #endif
 
+// https://docs.splitkb.com/product-guides/liatris/power-led
 void caps_word_set_user(bool active) {
     if (active) {
         // Do something when Caps Word activates.
