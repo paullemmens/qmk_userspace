@@ -4,6 +4,7 @@ ENCODER_ENABLE = no       # Enables the use of one or more encoders
 WPM_ENABLE = no
 VELOCIKEY_ENABLE = no
 KEY_LOCK_ENABLE = yes
+RGBLIGHT_ENABLE = yes
 
 # FIXME: this should be, I think, set globally in the user space rules.mk
 # but doesn't work without it here.
