@@ -5,8 +5,7 @@ WPM_ENABLE = no
 VELOCIKEY_ENABLE = no
 KEY_LOCK_ENABLE = yes
 
-# FIXME: this should be, I think, set globally in the user space rules.mk
-# but doesn't work without it here.
+RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
 CAPS_WORD_ENABLE = yes
 
 # Use Link Time Optimization to squeeze last bit of space because I cannot
