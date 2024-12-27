@@ -150,7 +150,7 @@ enum userspace_layers {
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
 
 #define _________________ADJUST_L1_________________       KC_BRID,  KC_BRIU, _______, _______, _______
-#define _________________ADJUST_L2_________________       RGB_SAI,  RGB_HUI, RGB_VAI, RGB_SPI, RGB_MOD
+#define _________________ADJUST_L2_________________       UG_SATU,  UG_HUEU, UG_VALU, UG_SPDU, UG_NEXT
 #define _________________ADJUST_L3_________________       RGB_M_SN, RGB_M_K, RGB_M_X, RGB_M_G, RGB_M_T
 
 #define _________________ADJUST_R1_________________       _______,  KC_AMPR, KC_ASTR, KC_LPRN, KC_UNDS

@@ -214,7 +214,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_ADJUST] = LAYOUT_wrapper(
       VK_TOGG, _________________ADJUST_L1_________________,                                      _________________ADJUST_R1_________________, _______,
       CW_TOGG, _________________ADJUST_L2_________________,                                      _________________ADJUST_R2_________________, _______,
-      RGB_TOG, _________________ADJUST_L3_________________, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW, _________________ADJUST_R3_________________, _______,
+      UG_TOGG, _________________ADJUST_L3_________________, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW, _________________ADJUST_R3_________________, _______,
                                  KC_MUTE, _______, _______, KC_NUM,  KC_SCRL, KC_INS,  MACOS_L,  DEFAU_L, COLEMAK, _______
     )
 // /*
