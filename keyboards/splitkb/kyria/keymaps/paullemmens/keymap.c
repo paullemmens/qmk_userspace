@@ -449,13 +449,13 @@ void caps_word_set_user(bool active) {
     if (active) {
         // Do something when Caps Word activates.
         // Set our LED pin as output
-        setPinOutput(24);
+        gpio_set_pin_output(24);
         // Turn the LED off
         // (Due to technical reasons, high is off and low is on)
-        writePinLow(24);
+        gpio_write_pin_low(24);
     } else {
         // Do something when Caps Word deactivates.
-        setPinOutput(24);
-        writePinHigh(24);
+        gpio_set_pin_output(24);
+        gpio_write_pin_high(24);
     }
 }
