@@ -31,15 +31,16 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case K_RSHFT:
             return TAPPING_TERM + 75;
         case H_LOWER:
-        case F_RAISE:
-        case J_RAISE:
         case U_ADJST:
             return TAPPING_TERM - 25;
+        case F_RAISE:
+        case J_RAISE:
+            return TAPPING_TERM - 50;
         case V__LCMD:
         case N_RCTRL:
         case M_RCTRL:
         case M__RCMD:
-            return TAPPING_TERM + 100;
+            return TAPPING_TERM + 50;
         default:
             return TAPPING_TERM;
     }
@@ -50,6 +51,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case U_ADJST:
+        case R_ADJST:
+        case F_RAISE:
+        case J_RAISE:
             return true;
         default:
             return false;
@@ -65,6 +69,8 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
             if (keycode == U_ADJST) {
                 // Disable HOLD_ON_OTHER_KEY_PRESS for U_ADJST
                 // aka enable IGNORE_MOD_TAP_INTERRUPT for U_ADJST.
+                return false;
+            } else if (keycode == R_ADJST) {
                 return false;
             } else if (keycode == H_LOWER) {
                 return false;
