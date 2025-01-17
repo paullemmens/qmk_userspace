@@ -33,6 +33,8 @@
 #define TAPPING_TERM_PER_KEY
 
 #define PERMISSIVE_HOLD_PER_KEY
+/* I so rarely want this, that it is not worthwhile enabling and defaulting to false. */
+/* #define HOLD_ON_OTHER_KEY_PRESS */
 
 /* #define TAPPING_FORCE_HOLD */
 #define TAPPING_TOGGLE 2

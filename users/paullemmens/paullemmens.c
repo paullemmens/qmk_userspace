@@ -28,19 +28,26 @@
 #if defined(TAPPING_TERM_PER_KEY)
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        // Reducing tapping term gives more chance of hitting the hold because
+        // I have lower chance to already lift the tap-hold key. That lifting
+        // would result in two taps.
+        //
+        // With permissive hold, shorter tapping terms tend more towards hold
+        // of the tap-hold key:
+        /* case U_ADJST: */
+        /*     return TAPPING_TERM - 25; */
+        /* case J_RAISE: */
+            /* return TAPPING_TERM - 50; */
+        //
+        // With permissive hold, longer tapping terms tend more towards tap.
+        /* case F_RAISE: */
+        /*     return TAPPING_TERM + 25; */
+        case H_LOWER:
+        case V__LCMD:
+        case N_RCTRL: // NO permissive hold!
+            return TAPPING_TERM + 50;
         case K_RSHFT:
             return TAPPING_TERM + 75;
-        case H_LOWER:
-        case U_ADJST:
-            return TAPPING_TERM - 25;
-        case F_RAISE:
-        case J_RAISE:
-            return TAPPING_TERM - 50;
-        case V__LCMD:
-        case N_RCTRL:
-        case M_RCTRL:
-        case M__RCMD:
-            return TAPPING_TERM + 50;
         default:
             return TAPPING_TERM;
     }
@@ -50,10 +57,15 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 #if defined(PERMISSIVE_HOLD_PER_KEY)
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case U_ADJST:
-        case R_ADJST:
         case F_RAISE:
+        case H_LOWER:
         case J_RAISE:
+        case K_RSHFT:
+        /* case M__RCMD: */
+//        case N_RCTRL:
+        case R_ADJST:
+        case U_ADJST:
+        case V__LCMD:
             return true;
         default:
             return false;
@@ -66,17 +78,13 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch(keycode) {
         // Capture all mod-tap keycodes.
         case QK_MOD_TAP ... QK_MOD_TAP_MAX:
-            if (keycode == U_ADJST) {
-                // Disable HOLD_ON_OTHER_KEY_PRESS for U_ADJST
-                // aka enable IGNORE_MOD_TAP_INTERRUPT for U_ADJST.
-                return false;
-            } else if (keycode == R_ADJST) {
-                return false;
-            } else if (keycode == H_LOWER) {
-                return false;
-            } else {
-                // Enable HOLD_ON_OTHER_KEY_PRESS for every other mod-tap keycode.
-                return true;
+            {
+                switch(keycode) {
+                    case M__RCMD:
+                        return true;
+                    default:
+                        return false;
+                }
             }
         default:
             return false;
