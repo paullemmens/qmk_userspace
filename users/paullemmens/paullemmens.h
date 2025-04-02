@@ -153,6 +153,6 @@ enum userspace_layers {
 #define _________________ADJUST_L2_________________       UG_SATU,  UG_HUEU, UG_VALU, UG_SPDU, UG_NEXT
 #define _________________ADJUST_L3_________________       RGB_M_SN, RGB_M_K, RGB_M_X, RGB_M_G, RGB_M_T
 
-#define _________________ADJUST_R1_________________       _______,  KC_AMPR, KC_ASTR, KC_LPRN, KC_UNDS
-#define _________________ADJUST_R2_________________       _______,  KC_DLR,  KC_PERC, KC_CIRC, _______
-#define _________________ADJUST_R3_________________       _______,  KC_EXLM, KC_AT,   KC_HASH, _______
+#define _________________ADJUST_R1_________________       TFLOW_U,  KC_AMPR, KC_ASTR, KC_LPRN, KC_UNDS
+#define _________________ADJUST_R2_________________       TFLOW_P,  KC_DLR,  KC_PERC, KC_CIRC, _______
+#define _________________ADJUST_R3_________________       TFLOW_D,  KC_EXLM, KC_AT,   KC_HASH, _______
