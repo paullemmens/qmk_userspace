@@ -7,6 +7,7 @@ typedef union {
   uint32_t raw;
   struct {
     bool     macos_enabled :1;
+    uint8_t  tap_flow_term : 8;
   };
 } user_config_t;
 
