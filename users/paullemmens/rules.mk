@@ -20,6 +20,7 @@ LEADER_ENABLE = no        # Enable the Leader Key feature
 TAP_DANCE_ENABLE = no
 UNICODE_ENABLE = no
 CAPS_WORD_ENABLE = yes
+REPEAT_KEY_ENABLE = yes
 
 SRC += paullemmens.c
 SRC += persistent.c
