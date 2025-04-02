@@ -16,6 +16,7 @@
 
 #include "paullemmens.h"
 #include "persistent.h"
+#include "modules/getreuer/tap_flow/tap_flow.h"
 
 #ifdef CALLUM_ONESHOT
   #include "callum_oneshot.h"
@@ -102,6 +103,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
 
     switch (keycode) {
+        case TFLOW_P:
+            if (user_config.tap_flow_term != g_tap_flow_term) {
+                user_config.tap_flow_term = g_tap_flow_term;
+                eeconfig_update_user(user_config.raw); // Writes the new status to EEPROM
+            }
+            break;
         case MACOS_L:  // This allows me to toggle macOS relevant adjusting of modifiers
             if (record->event.pressed) {
                 user_config.macos_enabled ^= 1; // Toggles the status
