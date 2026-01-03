@@ -48,4 +48,4 @@
 #define CAPS_WORD_IDLE_TIMEOUT 3000  // 3 seconds.
 
 // Tap flow term for/from the tap flow module of pgetreuer.
-#define TAP_FLOW_TERM 130
+#define FLOW_TAP_TERM 130
