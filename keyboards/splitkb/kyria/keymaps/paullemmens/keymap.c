@@ -203,20 +203,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-------------------------------------------.                              ,-------------------------------------------.
  * |   VLK  | BrDn | BrUp |      |      |      |                              |      |  &   |  *   |  (   |  _   |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |  CAPS  | SAI  | HUI  | VAI  | Eff+ | MOD  |                              |      |  $   |  %   |  ^   |      |        |
+ * |  CAPSW | SAI  | HUI  | VAI  | SPDU | EFFU |                              |      |  $   |  %   |  ^   |      |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |  RTOG  |RGB SN| RGB K| RGB X| RGB G| RGB T| RGB P| RGB B|  | RGB R|RGB SW|      |  !   |  @   |  #   |      |        |
+ * | RMTOG  | SAD  | HUD  | VAD  | SPDD | EFFD |      |      |  |      |      |      |  !   |  @   |  #   |      |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        | Mute |      |      | NumLk|Scrllk|  |Insert| OSX  |QWERTY|COLEMA|      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
+#ifdef RGB_MATRIX_ENABLE
     [_ADJUST] = LAYOUT_wrapper(
-      VK_TOGG, _________________ADJUST_L1_________________,                                      _________________ADJUST_R1_________________, _______,
-      CW_TOGG, _________________ADJUST_L2_________________,                                      _________________ADJUST_R2_________________, _______,
-      UG_TOGG, _________________ADJUST_L3_________________, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW, _________________ADJUST_R3_________________, _______,
-                                 KC_MUTE, _______, _______, KC_NUM,  KC_SCRL, KC_INS,  MACOS_L,  DEFAU_L, COLEMAK, _______
+      VK_TOGG, _________________ADJUST_L1_________________,                                     _________________ADJUST_R1_________________, _______,
+      CW_TOGG, _________________ADJUST_L2_________________,                                     _________________ADJUST_R2_________________, _______,
+      RM_TOGG, _________________ADJUST_L3_________________, _______, _______, _______, _______, _________________ADJUST_R3_________________, _______,
+                                 KC_MUTE, _______, _______, KC_NUM,  KC_SCRL, KC_INS,  MACOS_L, DEFAU_L, COLEMAK, _______
     )
+#endif // RGB_MATRIX_ENABLE
+#ifdef RGBLIGHT_ENABLE
+    [_ADJUST] = LAYOUT_wrapper(
+      VK_TOGG, _________________ADJUST_L1_________________,                                     _________________ADJUST_R1_________________, _______,
+      CW_TOGG, _________________ADJUST_L2_________________,                                     _________________ADJUST_R2_________________, _______,
+      UG_TOGG, _________________ADJUST_L3_________________, _______, _______, _______, _______, _________________ADJUST_R3_________________, _______,
+                                 KC_MUTE, _______, _______, KC_NUM,  KC_SCRL, KC_INS,  MACOS_L, DEFAU_L, COLEMAK, _______
+    )
+#endif // RGBLIGHT_ENABLE
 // /*
 //  * Layer template
 //  *
@@ -243,6 +253,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     return OLED_ROTATION_180;
 }
+
 
 static void render_qmk_logo(void) {
   static const char PROGMEM qmk_logo[] = {

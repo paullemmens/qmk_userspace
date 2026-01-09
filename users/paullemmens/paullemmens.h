@@ -150,9 +150,16 @@ enum userspace_layers {
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
 
+#ifdef RGB_MATRIX_ENABLE
+#define _________________ADJUST_L1_________________       KC_BRID,  KC_BRIU, _______, _______, RM_FLGN
+#define _________________ADJUST_L2_________________       RM_SATU,  RM_HUEU, RM_VALU, RM_SPDU, RM_NEXT
+#define _________________ADJUST_L3_________________       RM_SATD,  RM_HUED, RM_VALD, RM_SPDD, RM_PREV
+#endif // RGB_MATRIX_ENABLE
+#ifdef RGBLIGHT_ENABLE
 #define _________________ADJUST_L1_________________       KC_BRID,  KC_BRIU, _______, _______, _______
 #define _________________ADJUST_L2_________________       UG_SATU,  UG_HUEU, UG_VALU, UG_SPDU, UG_NEXT
-#define _________________ADJUST_L3_________________       RGB_M_SN, RGB_M_K, RGB_M_X, RGB_M_G, RGB_M_T
+#define _________________ADJUST_L3_________________       UG_SATD,  UG_HUED, UG_VALD, UG_SPDD, UG_PREV
+#endif // RGBLIGHT_ENABLE
 
 #define _________________ADJUST_R1_________________       _______,  KC_AMPR, KC_ASTR, KC_LPRN, KC_UNDS
 #define _________________ADJUST_R2_________________       _______,  KC_DLR,  KC_PERC, KC_CIRC, _______

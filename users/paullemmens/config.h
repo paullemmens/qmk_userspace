@@ -28,24 +28,19 @@
 #endif
 
 
-/* Customize timing related settings to make home row mods work for me. */
-#define TAPPING_TERM 175
-#define TAPPING_TERM_PER_KEY
-
-#define PERMISSIVE_HOLD_PER_KEY
-/* I so rarely want this, that it is not worthwhile enabling and defaulting to false. */
-/* #define HOLD_ON_OTHER_KEY_PRESS */
-
 /* #define TAPPING_FORCE_HOLD */
 #define TAPPING_TOGGLE 2
 
-
-// Personal configuration directives
 
 // Tap both shifts to activate caps word; in case of mod-tap press and hold
 // until tapping term.
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 #define CAPS_WORD_IDLE_TIMEOUT 3000  // 3 seconds.
 
+
 // Tap flow term for/from the tap flow module of pgetreuer.
-#define FLOW_TAP_TERM 130
+#define TAPPING_TERM 250
+#define PERMISSIVE_HOLD
+#define FLOW_TAP_TERM 130 // was 150
+#define CHORDAL_HOLD
+#define SPECULATIVE_HOLD

@@ -503,6 +503,19 @@ static void draw_bongo(bool minimal)
         oled_write_P(PSTR("WPM: "), false);
         oled_write(get_u8_str(get_current_wpm(), ' '), false);
 
+#ifdef RGBLIGHT_ENABLE
+        const char* effect_name = rgblight_get_mode_name(rgblight_get_mode());
+#endif //RGBLIGHT_ENABLE
+#ifdef RGB_MATRIX_ENABLE
+        const char* effect_name = rgb_matrix_get_mode_name(rgb_matrix_get_mode());
+#endif //RGB_MATRIX_ENABLE
+#if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+        oled_set_cursor(0, 5);
+        oled_write("                         ", false);
+        oled_set_cursor(0, 5);
+        oled_write(effect_name, false);
+#endif //RGBLIGHT_ENABLE || RGB_MATRIX_ENABLE
+
         // calculate && print clock
         /* oled_set_cursor(0, 2); */
         /* uint8_t  hour = last_minute / 60; */
