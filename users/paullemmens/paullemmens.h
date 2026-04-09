@@ -140,13 +140,13 @@ enum userspace_layers {
 #define _________________LOWER_R2__________________       KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_PIPE
 #define _________________LOWER_R3__________________       KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______
 
-#define _________________RAISE_L1__________________       _______, _______, KC_LBRC, KC_RBRC, _______
-#define _________________RAISE_L2__________________       KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV
-#define _________________RAISE_L3__________________       KC_PERC, KC_CIRC, KC_LCBR, RB_LCTL, KC_TILD
+#define _________________RAISE_L1__________________       _______, KC_EQL,  KC_LBRC, KC_RBRC, _______
+#define _________________RAISE_L2__________________       KC_QUOT, KC_BSLS, KC_LPRN, KC_RPRN, KC_GRV
+#define _________________RAISE_L3__________________       _______, _______, KC_LCBR, RB_LCTL, KC_TILD
 
 #define _________________RAISE_R1__________________       ________________NUMBER_RIGHT_______________
 #define _________________RAISE_R2__________________       _______, KC_4,    KC_5,    KC_6,    KC_PPLS
-#define _________________RAISE_R3__________________       _______, KC_1,    KC_2,    KC_3,    KC_PSLS
+#define _________________RAISE_R3__________________       _______, KC_1,    KC_2,    KC_3,    KC_COLN
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
 
@@ -162,5 +162,5 @@ enum userspace_layers {
 #endif // RGBLIGHT_ENABLE
 
 #define _________________ADJUST_R1_________________       _______,  KC_AMPR, KC_ASTR, KC_LPRN, KC_UNDS
-#define _________________ADJUST_R2_________________       _______,  KC_DLR,  KC_PERC, KC_CIRC, _______
-#define _________________ADJUST_R3_________________       _______,  KC_EXLM, KC_AT,   KC_HASH, _______
+#define _________________ADJUST_R2_________________       _______,  KC_DLR,  KC_PERC, KC_CIRC, KC_QUOT
+#define _________________ADJUST_R3_________________       _______,  KC_EXLM, KC_AT,   KC_HASH, KC_COLN
