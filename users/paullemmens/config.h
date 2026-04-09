@@ -41,6 +41,6 @@
 // Tap flow term for/from the tap flow module of pgetreuer.
 #define TAPPING_TERM 250
 #define PERMISSIVE_HOLD
-#define FLOW_TAP_TERM 130 // was 150
+#define FLOW_TAP_TERM 150 // was 130
 #define CHORDAL_HOLD
 #define SPECULATIVE_HOLD
