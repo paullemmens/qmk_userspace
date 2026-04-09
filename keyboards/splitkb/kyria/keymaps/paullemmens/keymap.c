@@ -23,14 +23,14 @@
 
     #ifdef WPM_GRAPH
         uint16_t wpm_graph_timer = 0;
-        #include "wpm_graph.h"
+        #include "wpm_graph.c"
     #endif
 
     #ifdef BONGO2
-        #include "bongo2.h"
+        #include "bongo2.c"
     #endif
     #ifdef BONGOCAT
-        #include "bongocat.h"
+        #include "bongocat.c"
     #endif
 #endif
 
