@@ -2,3 +2,7 @@ ENCODER_MAP_ENABLE = no
 
 # This adds module functionality to your keyboard (files found in users/halcyon_modules)
 USER_NAME := halcyon_modules
+
+# Include shared obbut code
+VPATH += $(QMK_USERSPACE)/users/paullemmens
+SRC += paullemmens.c
