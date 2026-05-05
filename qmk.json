@@ -1,8 +1,16 @@
 {
-    "userspace_version": "1.0",
+    "userspace_version": "1.1",
     "build_targets": [
         ["splitkb/kyria/rev1", "paullemmens"],
         ["splitkb/kyria/rev2", "paullemmens"],
-        ["redox/rev1/base", "paullemmens"]
+        ["redox/rev1/base", "paullemmens"],
+        [
+            "splitkb/halcyon/kyria/rev4",
+            "paullemmens",
+            {
+                "HLC_TFT_DISPLAY": "1",
+                "TARGET": "splitkb_halcyon_kyria_rev4_tft"
+            }
+        ]
     ]
 }
