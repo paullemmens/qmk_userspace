@@ -224,7 +224,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU),  ENCODER_CCW_CW(KC_VOLD, KC_VOLU),  ENCODER_CCW_CW(KC_PGUP, KC_PGDN),  ENCODER_CCW_CW(KC_PGUP, KC_PGDN)  },
     [1] = { ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______)  },
     [2] = { ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______)  },
-    [3] = { ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______)  },
+    [3] = { ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(LOPT(KC_LEFT), LOPT(KC_RIGHT)),  ENCODER_CCW_CW(LOPT(KC_LEFT), LOPT(KC_RIGHT))  },
     [4] = { ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______)  },
     [5] = { ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______)  },
     [6] = { ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______),  ENCODER_CCW_CW(_______, _______)  },
@@ -234,7 +234,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #ifdef ENCODER_ENABLE
 // Use code from plattfot as example to make layer specifc encoder actions
 bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) {
+    if (index == 0) { // Left half, soldered encoder
         switch (get_highest_layer(layer_state)) {
             // Move and move to windows in i3-wm or using Rectangle in macOS.
             case _RAISE:
@@ -292,7 +292,12 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 break;
         }
     }
-    else if (index == 1) { // Right-hand encoder
+#if defined(KEYBOARD_splitkb_kyria_rev2) || defined(KEYBOARD_splitkb_kyria_rev1)
+    else if (index == 1) // Old kyria rev1 rev2 right-hand soldered encoder
+#else // if defined(KEYBOARD_splitkb_kyria_rev4) 
+    /* else if (index == 1) // Left half, halcyon encoder */
+    else if (index == 2) { // Right-hand soldered encoder
+#endif // kyria_rev2 || kyria_rev1
         switch (get_highest_layer(layer_state)) {
             case _LOWER:
                 // Ctrl+left/right to move between words
@@ -320,6 +325,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 break;
         }
     }
+    /* else if (index == 3) { // Right-hand halcyon encoder */
+    /* } */
+    
 
     // Return true to also run the keyboard level code. In my case I think this
     // then runs the volume thing on macOS.
