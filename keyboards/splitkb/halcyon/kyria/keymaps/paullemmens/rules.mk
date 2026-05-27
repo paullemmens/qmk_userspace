@@ -10,3 +10,4 @@ USER_NAME := halcyon_modules
 # Include shared code
 VPATH += $(QMK_USERSPACE)/users/paullemmens
 SRC += paullemmens.c
+SRC += persistent.c

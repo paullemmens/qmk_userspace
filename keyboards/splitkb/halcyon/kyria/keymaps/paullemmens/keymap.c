@@ -177,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_ADJUST] = LAYOUT_wrapper(
       VK_TOGG, _________________ADJUST_L1_________________,                                     _________________ADJUST_R1_________________, _______,
       CW_TOGG, _________________ADJUST_L2_________________,                                     _________________ADJUST_R2_________________, _______,
-      RM_TOGG, _________________ADJUST_L3_________________, _______, _______, _______, _______, _________________ADJUST_R3_________________, _______,
+      RM_TOGG, _________________ADJUST_L3_________________, _______, EE_CLR,  DB_TOGG, _______, _________________ADJUST_R3_________________, _______,
                                  KC_MUTE, _______, _______, KC_NUM,  KC_SCRL, KC_INS,  MACOS_L, DEFAU_L, COLEMAK, _______,
       KC_MUTE, KC_NO, KC_NO, KC_NO, KC_NO,                                                               KC_MUTE, KC_NO, KC_NO, KC_NO, KC_NO 
     )
@@ -186,7 +186,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_ADJUST] = LAYOUT_wrapper(
       VK_TOGG, _________________ADJUST_L1_________________,                                     _________________ADJUST_R1_________________, _______,
       CW_TOGG, _________________ADJUST_L2_________________,                                     _________________ADJUST_R2_________________, _______,
-      UG_TOGG, _________________ADJUST_L3_________________, _______, _______, _______, _______, _________________ADJUST_R3_________________, _______,
+      UG_TOGG, _________________ADJUST_L3_________________, _______, EE_CLR,  DB_TOGG, _______, _________________ADJUST_R3_________________, _______,
                                  KC_MUTE, _______, _______, KC_NUM,  KC_SCRL, KC_INS,  MACOS_L, DEFAU_L, COLEMAK, _______,
       KC_MUTE, KC_NO, KC_NO, KC_NO, KC_NO,                                                               KC_MUTE, KC_NO, KC_NO, KC_NO, KC_NO 
     )
