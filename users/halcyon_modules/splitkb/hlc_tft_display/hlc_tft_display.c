@@ -3,6 +3,8 @@
 
 #include "halcyon.h"
 #include "hlc_tft_display.h"
+#include "persistent.h"
+#include "eeconfig.h"
 
 #include "hardware/structs/rosc.h"
 
@@ -23,7 +25,6 @@
 #include "graphics/numbers/9.qgf.h"
 #include "graphics/numbers/undef.qgf.h"
 
-static const char *num =         "Num";
 static const char *caps     = "Caps";
 static const char *revision = "rev4.1";
 
@@ -41,6 +42,9 @@ painter_device_t lcd_surface;
 led_t last_led_usb_state = {0};
 layer_state_t last_layer_state = {0};
 char old_wpm[] = "WPM: 0";
+
+/* FIXME: Hier ook een state variabele definieren voor VLK en OSX en dan in de code zelf de verandering checken.*/
+user_config_t last_user_config = eeconfig_read_user();
 
 #define GRID_WIDTH 27
 #define GRID_HEIGHT 48
