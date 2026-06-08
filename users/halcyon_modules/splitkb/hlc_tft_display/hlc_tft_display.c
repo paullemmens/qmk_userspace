@@ -24,8 +24,8 @@
 #include "graphics/numbers/undef.qgf.h"
 
 static const char *num =         "Num";
-static const char *scroll =      "Scroll";
 static const char *caps     = "Caps";
+static const char *revision = "rev4.1";
 
 static painter_font_handle_t Retron27;
 static painter_font_handle_t Retron27_underline;
@@ -40,6 +40,7 @@ painter_device_t lcd_surface;
 
 led_t last_led_usb_state = {0};
 layer_state_t last_layer_state = {0};
+char old_wpm[] = "WPM: 0";
 
 #define GRID_WIDTH 27
 #define GRID_HEIGHT 48
@@ -182,6 +183,10 @@ void update_display(void) {
     static bool first_run_led = false;
     static bool first_run_layer = false;
 
+    uint current_wpm = get_current_wpm();
+    bool is_typing = current_wpm > 10;
+    char wpm[8] = "WPM: ";
+    strcat(wpm, get_u8_str(current_wpm, ' '));
     if( first_run_layer == false) {
         // Load fonts
         Retron27 = qp_load_font_mem(font_Retron2000_27);
@@ -196,6 +201,15 @@ void update_display(void) {
       first_run_led = true;
     }  
 
+    // Display Halcyon Kyria revision number when idle; wpm otherwise.
+    if (!is_typing) {
+      qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height - 5,      Retron27, old_wpm, HSV_BLACK, HSV_BLACK);
+      qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height - 5,      Retron27, revision, HSV_SCROLL_OFF, HSV_BLACK);
+    } else {
+      qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height - 5,      Retron27, old_wpm, HSV_BLACK, HSV_BLACK);
+      qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height - 5,      Retron27, wpm,      HSV_SCROLL_ON, HSV_BLACK);
+      strcpy(old_wpm, wpm);
+      
     }
 
     if(last_layer_state != layer_state || first_run_layer == false) {
