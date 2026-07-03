@@ -47,6 +47,7 @@ static uint8_t prev_wpm = 0;
 uint16_t wpm_display_timer = 0;
 static bool reset_display_timer = true;
 static user_config_t last_user_config;
+static bool velocikey_state = false;
 
 #define GRID_WIDTH 27
 #define GRID_HEIGHT 48
@@ -225,10 +226,14 @@ void update_display(void) {
     if (!user_config.macos_enabled) {
       strcpy(settings, "VLK         ");
     }
+    if (!velocikey_get_enabled()) {
+      strcpy(settings, "    OSX");
+    }
 
-    if (user_config.macos_enabled != last_user_config.macos_enabled) {
+    if (user_config.macos_enabled != last_user_config.macos_enabled || velocikey_state != velocikey_get_enabled()) {
         qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height * 2 - 10, Retron27, settings,    HSV_NUM_OFF,    HSV_BLACK);
         last_user_config.raw = user_config.raw;
+        velocikey_state = velocikey_get_enabled();
     }
 
     // Display Halcyon Kyria revision number when idle; wpm otherwise.
