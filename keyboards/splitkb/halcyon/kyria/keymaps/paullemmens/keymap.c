@@ -6,15 +6,10 @@
 #include "paullemmens.h"
 #include "persistent.h"
 
-#ifdef VELOCIKEY_ENABLE
-#include "rgblight.h"
-#endif
-
 #ifdef ENCODER_ENABLE
 bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
 #endif
-
 
 // There is an extra row added for the Halcyon modules. Currently only the Encoder module is
 // supported but we reserve 5 keys per half for future expansion. Your personal keymap will also
