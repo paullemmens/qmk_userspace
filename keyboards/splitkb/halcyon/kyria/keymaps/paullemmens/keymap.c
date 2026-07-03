@@ -158,7 +158,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     ),
 
-    // FIXME: fix memory for the macos setting.
 /*
  * Adjust Layer: Symbols, volume, locks, RGB
  *
