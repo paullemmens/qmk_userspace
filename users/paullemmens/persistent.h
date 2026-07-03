@@ -1,5 +1,4 @@
-#ifndef PERSISTENT_H_
-#define PERSISTENT_H_
+#pragma once
 
 #include QMK_KEYBOARD_H
 
@@ -13,4 +12,3 @@ typedef union {
 
 extern user_config_t user_config;
 
-#endif // PERSISTENT_H_
