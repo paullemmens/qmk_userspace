@@ -1,6 +1,8 @@
 #include "persistent.h"
 #include "os_detection.h"
 
+user_config_t user_config;
+
 void keyboard_post_init_user(void) {
   // Call the keymap level matrix init.
 

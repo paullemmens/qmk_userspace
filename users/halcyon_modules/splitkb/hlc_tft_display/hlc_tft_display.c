@@ -3,6 +3,9 @@
 
 #include "halcyon.h"
 #include "hlc_tft_display.h"
+#include "eeconfig.h"
+
+#include "persistent.h"
 
 #include "hardware/structs/rosc.h"
 
@@ -23,9 +26,8 @@
 #include "graphics/numbers/9.qgf.h"
 #include "graphics/numbers/undef.qgf.h"
 
-static const char *caps =        "Caps";
-static const char *num =         "Num";
-static const char *scroll =      "Scroll";
+static const char *caps     = "Caps";
+static const char *revision = "rev4.1     ";
 
 static painter_font_handle_t Retron27;
 static painter_font_handle_t Retron27_underline;
@@ -40,6 +42,11 @@ painter_device_t lcd_surface;
 
 led_t last_led_usb_state = {0};
 layer_state_t last_layer_state = {0};
+
+static uint8_t prev_wpm = 0;
+uint16_t wpm_display_timer = 0;
+static bool reset_display_timer = true;
+static user_config_t last_user_config;
 
 #define GRID_WIDTH 27
 #define GRID_HEIGHT 48
@@ -182,21 +189,57 @@ void update_display(void) {
     static bool first_run_led = false;
     static bool first_run_layer = false;
 
+    uint8_t current_wpm = get_current_wpm();
+    bool is_typing = current_wpm > 10;
+    char wpm[8] = "WPM: ";
+    if (current_wpm < 100) {
+        strcat(wpm, " ");
+        strcat(wpm, get_u8_str(current_wpm, ' '));
+    } else {
+        strcat(wpm, get_u8_str(current_wpm, ' '));
+    }
+
+    if (reset_display_timer) {
+        wpm_display_timer = timer_read();
+        reset_display_timer = false;
+    }
+
     if( first_run_layer == false) {
         // Load fonts
         Retron27 = qp_load_font_mem(font_Retron2000_27);
         Retron27_underline = qp_load_font_mem(font_Retron2000_underline_27);
+
+        last_user_config.raw = 0;
     }
 
-    if(last_led_usb_state.raw != host_keyboard_led_state().raw || first_run_led == false) {
-        led_t led_usb_state = host_keyboard_led_state();
+    if (is_caps_word_on() || host_keyboard_led_state().caps_lock || first_run_led == false) {
+      qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height * 3 - 15, Retron27, caps,   HSV_CAPS_ON,   HSV_BLACK);
+      first_run_led = true;
+    } else {
+      qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height * 3 - 15, Retron27, caps,   HSV_CAPS_OFF,   HSV_BLACK);
+      first_run_led = true;
+    }  
 
-        led_usb_state.caps_lock   ? qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height * 3 - 15, Retron27_underline, caps,   HSV_CAPS_ON,   HSV_BLACK) : qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height * 3 - 15, Retron27, caps,   HSV_CAPS_OFF,   HSV_BLACK);
-        led_usb_state.num_lock    ? qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height * 2 - 10, Retron27_underline, num,    HSV_NUM_ON,    HSV_BLACK) : qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height * 2 - 10, Retron27, num,    HSV_NUM_OFF,    HSV_BLACK);
-        led_usb_state.scroll_lock ? qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height - 5,      Retron27_underline, scroll, HSV_SCROLL_ON, HSV_BLACK) : qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height - 5,      Retron27, scroll, HSV_SCROLL_OFF, HSV_BLACK);
+    // Display an indicator that I am in macOS mode.
+    char settings[14] = "VLK OSX";
+    if (!user_config.macos_enabled) {
+      strcpy(settings, "VLK         ");
+    }
 
-        last_led_usb_state = led_usb_state;
-        first_run_led = true;
+    if (user_config.macos_enabled != last_user_config.macos_enabled) {
+        qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height * 2 - 10, Retron27, settings,    HSV_NUM_OFF,    HSV_BLACK);
+        last_user_config.raw = user_config.raw;
+    }
+
+    // Display Halcyon Kyria revision number when idle; wpm otherwise.
+    if (is_typing) {
+        if (timer_elapsed(wpm_display_timer) > 2000) {
+            qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height - 5,      Retron27, wpm,      HSV_SCROLL_ON, HSV_BLACK);
+            prev_wpm = current_wpm;
+            reset_display_timer = true;
+        }
+    } else {
+        qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height - 5,      Retron27, revision, HSV_SCROLL_OFF, HSV_BLACK);
     }
 
     if(last_layer_state != layer_state || first_run_layer == false) {

@@ -11,6 +11,6 @@ typedef union {
   };
 } user_config_t;
 
-user_config_t user_config;
+extern user_config_t user_config;
 
 #endif // PERSISTENT_H_
